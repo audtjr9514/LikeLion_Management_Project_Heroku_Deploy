@@ -2,8 +2,30 @@
 {% block content %}
 <div class="jumbotron">
     <form action="{% url 'create' %}">
-    <h1>제목 <input type="text" name="title"></h1>
-    <p class="lead">본문<textarea cols=40 rows=10 name="body"></textarea></p>
-    <input class="btn btn-primary" type="submit" value="제출하기"></input>
-  </div>
+      <div class="form__field">
+        <label for="title" class="form-title">제목</label>
+        <input id="title" type="text" name="title">
+      </div>
+      <div class="form__field">
+        <label class="form-body" for="body" class="lead">본문</label>
+        <textarea style="display:none;" id="body" cols=40 rows=10 name="body"></textarea>
+      </div>
+      <div id="editSection"></div>
+      <script async>
+        let asd = '**asd**'
+        var editor = new tui.Editor({
+          el: document.querySelector('#editSection'),
+          initialEditType: 'markdown',
+          previewStyle: 'vertical',
+          height: '300px',
+          events: {
+            'change': () => {
+              document.getElementById('body').innerHTML = editor.getValue()
+            }
+          }
+        })
+      </script>
+      <input class="btn btn-primary" type="submit" value="제출하기" />
+    </form>
+</div>
 {% endblock %}

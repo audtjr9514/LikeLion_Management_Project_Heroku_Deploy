@@ -3,7 +3,7 @@
 {% for meet in meets.all%}
 <div class="jumbotron">
   <h1>{{meet.title}}</h1>
-  <p class="lead">{{meet.pub_date}}<br>{{meet.body}}</p>
+  <p class="lead">{{meet.pub_date}}</p>
   <a class="btn btn-lg btn-primary" href="{% url 'detail' meet.id %}" role="button">자세히 보기 &raquo;</a>
 </div>
 {%endfor%}

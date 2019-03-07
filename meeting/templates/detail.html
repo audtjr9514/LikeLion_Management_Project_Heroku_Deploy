@@ -2,7 +2,17 @@
 {% block content %}
 <div class="jumbotron">
   <h1>{{meet.title}} 모임</h1>
-  <p class="lead">{{meet.pub_date}}<br>{{meet.body}}</p>
+  <p class="lead">{{meet.pub_date}}<br></p>
+  <div id="viewerSection"></div>
+  <script>
+    let content = `{{meet.body}}`
+    var editor = tui.Editor.factory({
+      el: document.querySelector('#viewerSection'),
+      viewer: true,
+      height: '500px',
+      initialValue: content
+    })
+  </script>
   {% if meet.image != '' %}
   <div class="col-md-4">
     <div class="card mb-4 shadow-sm">
